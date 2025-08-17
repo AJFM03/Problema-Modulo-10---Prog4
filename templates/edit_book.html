@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Editar Libro</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Título</label>
+        <input type="text" class="form-control" name="title" value="{{ book.title }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Autor</label>
+        <input type="text" class="form-control" name="author" value="{{ book.author }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="genre" class="form-label">Género</label>
+        <input type="text" class="form-control" name="genre" value="{{ book.genre }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Estado</label>
+        <select class="form-select" name="status" required>
+            <option value="leído" {% if book.status == "leído" %}selected{% endif %}>Leído</option>
+            <option value="no leído" {% if book.status == "no leído" %}selected{% endif %}>No leído</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}
